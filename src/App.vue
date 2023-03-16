@@ -1,30 +1,25 @@
-<template>
-  <v-switch
-    v-model="model"
-    hide-details
-    true-value="Dark"
-    false-value="Light"
-    :label="`Switch to ${model}`"
-    @change="toggleTheme"
-  ></v-switch>
-</template>
+<style>
+@import "./assets/styles/fonts.css";
+.font {
+  font-family: Play;
+}
+</style>
 
 <script>
-import { useTheme } from "vuetify";
+import Toolbar from "@/components/Toolbar.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
-  data: () => ({
-    model: "Dark",
-  }),
-  setup() {
-    const theme = useTheme();
-    return {
-      theme,
-      toggleTheme: () =>
-        (theme.global.name.value = theme.global.current.value.dark
-          ? "light"
-          : "dark"),
-    };
+  components: {
+    Toolbar,
+    Footer,
   },
 };
 </script>
+
+<template>
+  <v-app class="font">
+    <Toolbar />
+    <Footer />
+  </v-app>
+</template>
